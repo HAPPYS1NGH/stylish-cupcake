@@ -19,9 +19,11 @@ const config = {
     },
     extend: {
       colors: {
+        blue: "#026BCC",
+        border: "#111111",
+        peach: "#F27389",
         rabble: "#08F7AF",
         back: "#E7E7E7",
-        border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
         background: "var(--tg-theme-bg-color)",
