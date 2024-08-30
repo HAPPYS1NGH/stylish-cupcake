@@ -20,10 +20,12 @@ const config = {
     extend: {
       colors: {
         blue: "#026BCC",
+        "light-blue": "#4DA3F3",
         border: "#111111",
         peach: "#F27389",
         rabble: "#08F7AF",
         back: "#E7E7E7",
+        fill: "#0E0F2E",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
         background: "var(--tg-theme-bg-color)",
