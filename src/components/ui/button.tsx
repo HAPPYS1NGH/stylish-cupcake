@@ -21,6 +21,7 @@ const buttonVariants = cva(
         rabble: "bg-rabble text-primary-foreground hover:bg-rabble/90 text-md",
         tertiary:
           "bg-white text-primary-foreground hover:bg-[#E7E7E7]/90 text-md text-[#DC15BA]",
+        // send: "bg-[#89C0F2] text-bold text-[#366188] border-b-8 border-[#446079] rounded-xl p-8 ",
       },
       size: {
         default: "h-10 px-4 py-2",

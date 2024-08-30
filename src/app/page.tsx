@@ -64,7 +64,7 @@ export default function Home() {
     }
   };
   return (
-    <main className="my-4 p-4 border-x-[10px] border-b-[10px] border-t-[15px] border-border rounded-[35px] gap-4 flex flex-col text-center">
+    <main className="my-4 p-4 border-x-[10px] border-b-[10px] border-t-[15px] border-border rounded-[35px] gap-6 flex flex-col text-center">
       <div className="my-2">
         <h1 className=" text-xl font-sans font-bold mb-\\ ">Send Cupcake</h1>
         <p className="text-xs">Paste a wallet address to send a cupcake</p>
@@ -82,6 +82,89 @@ export default function Home() {
           <p className="text-2xl">3</p>
         </div>
         <Image src="/receipt.svg" alt="Receipt" width={41} height={45} />
+      </div>
+      <div className="flex items-center justify-between">
+        <div className="w-full bg-[#0269C8] p-2 border-4  border-light-blue rounded-3xl flex flex-col justify-center items-center gap-4">
+          <div className="flex  justify-center items-center gap-4">
+            <Image
+              src="/cupcake-vending.svg"
+              alt="Vending Cupcake"
+              width={34}
+              height={34}
+            />{" "}
+            <Image
+              src="/cupcake-vending.svg"
+              alt="Vending Cupcake"
+              width={34}
+              height={34}
+            />{" "}
+            <Image
+              src="/cupcake-vending.svg"
+              alt="Vending Cupcake"
+              width={34}
+              height={34}
+            />{" "}
+            <Image
+              src="/cupcake-vending.svg"
+              alt="Vending Cupcake"
+              width={34}
+              height={34}
+            />{" "}
+            <Image
+              src="/cupcake-vending.svg"
+              alt="Vending Cupcake"
+              width={34}
+              height={34}
+            />
+          </div>
+          <div className="flex  justify-center items-center gap-4">
+            <Image
+              src="/cupcake-vending.svg"
+              alt="Vending Cupcake"
+              width={34}
+              height={34}
+            />{" "}
+            <Image
+              src="/cupcake-vending.svg"
+              alt="Vending Cupcake"
+              width={34}
+              height={34}
+            />{" "}
+            <Image
+              src="/cupcake-vending.svg"
+              alt="Vending Cupcake"
+              width={34}
+              height={34}
+            />{" "}
+            <Image
+              src="/cupcake-vending.svg"
+              alt="Vending Cupcake"
+              width={34}
+              height={34}
+            />{" "}
+            <Image
+              src="/cupcake-vending.svg"
+              alt="Vending Cupcake"
+              width={34}
+              height={34}
+            />
+          </div>
+        </div>
+      </div>
+
+      <div className="flex items-center justify-around">
+        <div>
+          <Button className="bg-[#89C0F2] text-2xl text-bold text-[#366188] border-b-8 border-[#446079] rounded-xl p-8">
+            Send
+          </Button>
+        </div>
+        <div>
+          <p className="text-xs text-black mb-2">Cupcakes Received</p>
+          <div className="flex justify-between bg-fill text-white text-bold rounded-full text-left px-4">
+            <p className="text-3xl">33</p>
+            <Image src="/dropdown.svg" alt="Dropdown" width={36} height={24} />
+          </div>
+        </div>
       </div>
     </main>
   );
