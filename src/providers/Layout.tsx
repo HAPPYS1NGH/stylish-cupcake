@@ -36,9 +36,9 @@ function Layout({ children }: { children: React.ReactNode }) {
   }, [bb, router, pathname]);
 
   return (
-    <main className="bg-background">
+    <main className="bg-blue text-white">
       <Navbar />
-      <main className=" mx-3 my-4 ">{children}</main>
+      <main className=" mx-4 my-4 ">{children}</main>
       <Toaster richColors />
     </main>
   );

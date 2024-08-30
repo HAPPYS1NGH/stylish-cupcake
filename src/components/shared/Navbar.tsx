@@ -7,37 +7,43 @@ import Image from "next/image";
 
 const Navbar = () => {
   const pathname = usePathname();
-  console.log(pathname);
+
+  // Check if the current path is /leaderboard
+  const isLeaderboardPage = pathname === "/leaderboard";
 
   return (
-    <nav className="mx-3 my-4">
-      <div className="flex items-end">
-        <Image src="/rabble.svg" alt="Rabble" width={82.8} height={21.6} />
-        <div className="ml-auto flex items-center ">
-          <ConnectButton accountStatus={"avatar"} chainStatus={"icon"} />
+    <nav className="mx-4 my-4">
+      {isLeaderboardPage ? (
+        <div className="flex items-center">
+          <Link href="/">
+            <Image
+              src="/back.svg" // Ensure you have a back button icon in your public folder
+              alt="Back"
+              width={24}
+              height={24}
+            />
+          </Link>
         </div>
-      </div>
-      <hr className="bg-black my-2" />
-      <div className="flex space-x-4 ">
-        <Link
-          href="/"
-          className={`${
-            pathname == "/" ? "text-rabble" : "text-color  hover:text-color/90"
-          } `}
-        >
-          Home
-        </Link>
-        <Link
-          href="/contract"
-          className={`${
-            pathname == "/contract"
-              ? "text-rabble"
-              : "text-color hover:text-color/90"
-          } `}
-        >
-          Contract
-        </Link>
-      </div>
+      ) : (
+        <div className="flex items-center">
+          <div className="flex items-center gap-2">
+            <Image src="/logo.svg" alt="Cupcake" width={34} height={34} />
+            <h1 className="ml-2">CUPCAKE</h1>
+          </div>
+
+          <div className="ml-auto flex items-center gap-2">
+            <Link href="/leaderboard">
+              <Image
+                src="/leaderboard.svg"
+                alt="Leaderboard"
+                width={32}
+                height={28}
+              />
+            </Link>
+            <ConnectButton accountStatus={"avatar"} chainStatus={"icon"} />
+          </div>
+        </div>
+      )}
     </nav>
   );
 };
