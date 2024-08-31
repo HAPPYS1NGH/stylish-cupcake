@@ -1,25 +1,62 @@
-"use client";
+import Image from "next/image";
 
-import { WriteContract } from "@/containers/contract/WriteContract";
-import { ReadContract } from "@/containers/contract/ReadContract";
-
-import { useAccount } from "wagmi";
-function ContractExample() {
-  const { isConnected } = useAccount();
+function Leaderboard() {
   return (
-    <div className="">
-      {isConnected ? (
-        <>
-          <ReadContract />
-          <WriteContract />
-        </>
-      ) : (
-        <div className=" flex flex-col gap-4 items-center justify-center text-center text-2xl ">
-          Please Connect the Wallet
+    <main className="bg-black">
+      <div className="bg-blue rounded-b-xl">
+        <h1 className="text-center text-2xl font-bold my-4">Leaderboard</h1>
+        <div className="flex justify-center items-center gap-10 mt-10">
+          {/* Left Item */}
+          <div className="flex flex-col gap-2 items-center">
+            <p className="text-sm">2</p>
+            <Image
+              src="/sample.png"
+              alt="Sample"
+              width={50}
+              height={50}
+              className="rounded-full border-4 border-light-blue"
+            />
+            <p className="font-bold text-sm">5300</p>
+            <p className="text-xs">Ankit</p>
+          </div>
+
+          {/* Middle Item (Higher than others) */}
+          <div className="flex flex-col gap-2 items-center -mt-4">
+            <Image
+              src="/crown.svg"
+              alt="Crown"
+              width={27.53}
+              height={13.25}
+              className="-mb-4 z-10"
+            />
+            <Image
+              src="/sample.png"
+              alt="Sample"
+              width={50}
+              height={50}
+              className="rounded-full border-4 border-light-blue"
+            />
+            <p className="font-bold text-sm">6400</p>
+            <p className="text-xs">John</p>
+          </div>
+
+          <div className="flex flex-col gap-2 items-center">
+            <p className="text-sm">3</p>
+
+            <Image
+              src="/sample.png"
+              alt="Sample"
+              width={50}
+              height={50}
+              className="rounded-full border-4 border-light-blue"
+            />
+            <p className="font-bold text-sm">5200</p>
+            <p className="text-xs">Emily</p>
+          </div>
         </div>
-      )}
-    </div>
+      </div>
+    </main>
   );
 }
 
-export default ContractExample;
+export default Leaderboard;

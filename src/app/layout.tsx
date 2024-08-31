@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Outfit, Be_Vietnam_Pro } from "next/font/google";
+import { Outfit, Be_Vietnam_Pro, Candal } from "next/font/google";
 import "@rainbow-me/rainbowkit/styles.css";
 import "./globals.css";
 import Web3Provider from "@/providers/Web3Provider";
@@ -11,6 +11,11 @@ const beVietnamPro = Be_Vietnam_Pro({
   weight: "400",
   subsets: ["latin"],
   variable: "--font-beVietnamPro",
+});
+const candal = Candal({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-candal",
 });
 
 export const metadata: Metadata = {
@@ -24,7 +29,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${outfit.variable} ${beVietnamPro.variable}`}>
+    <html
+      lang="en"
+      className={`${outfit.variable} ${beVietnamPro.variable} ${candal.variable}`}
+    >
       <body className={beVietnamPro.className}>
         <Web3Provider>
           <TelegramProvider>

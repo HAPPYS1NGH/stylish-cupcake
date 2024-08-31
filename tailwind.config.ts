@@ -91,6 +91,7 @@ const config = {
       fontFamily: {
         sans: ['var(--font-outfit)'],
         mono: ['var(--font-beVietnamPro)'],
+        candal: ['var(--font-candal)'],
       },
     },
   },

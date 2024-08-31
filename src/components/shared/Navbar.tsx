@@ -26,9 +26,9 @@ const Navbar = () => {
         </div>
       ) : (
         <div className="flex items-center">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1">
             <Image src="/logo.svg" alt="Cupcake" width={34} height={34} />
-            <h1 className="ml-2">CUPCAKE</h1>
+            <h1 className="ml-2 font-candal">CUPCAKE</h1>
           </div>
 
           <div className="ml-auto flex items-center gap-2">

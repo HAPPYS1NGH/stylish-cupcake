@@ -154,14 +154,14 @@ export default function Home() {
 
       <div className="flex items-center justify-around">
         <div>
-          <Button className="bg-[#89C0F2] text-2xl text-bold text-[#366188] border-b-8 border-[#446079] rounded-xl p-8">
+          <Button className="bg-[#89C0F2] text-2xl font-bold text-[#366188] border-b-8 border-[#446079] rounded-xl p-8 active:translate-y-1 active:border-b-4 hover:bg-[#89C0F2]/90">
             Send
           </Button>
         </div>
         <div>
           <p className="text-xs text-black mb-2">Cupcakes Received</p>
-          <div className="flex justify-between bg-fill text-white text-bold rounded-full text-left px-4">
-            <p className="text-3xl">33</p>
+          <div className="flex justify-between bg-fill text-white text-bold rounded-full text-left px-4 py-2">
+            <p className="text-2xl">33</p>
             <Image src="/dropdown.svg" alt="Dropdown" width={36} height={24} />
           </div>
         </div>
