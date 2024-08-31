@@ -64,7 +64,7 @@ export default function Home() {
     }
   };
   return (
-    <main className="my-4 p-4 border-x-[10px] border-b-[10px] border-t-[15px] border-border rounded-[35px] gap-6 flex flex-col text-center">
+    <main className="my-4 mx-2 p-4 border-x-[10px] border-b-[10px] border-t-[15px] border-border rounded-[35px] gap-6 flex flex-col text-center">
       <div className="my-2">
         <h1 className=" text-xl font-sans font-bold mb-\\ ">Send Cupcake</h1>
         <p className="text-xs">Paste a wallet address to send a cupcake</p>
