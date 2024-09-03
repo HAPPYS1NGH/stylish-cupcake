@@ -1,1 +1,1 @@
-export const counterAddress = "0x75b167a1628b6F239C0BEA211d731578bA90465a"
+export const vendingMachineAddress = "0xDfa8080b46970B71f1744f459530C86ee0A533c2"
