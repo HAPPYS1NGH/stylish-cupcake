@@ -22,6 +22,7 @@ const buttonVariants = cva(
         tertiary:
           "bg-white text-primary-foreground hover:bg-[#E7E7E7]/90 text-md text-[#DC15BA]",
         // send: "bg-[#89C0F2] text-bold text-[#366188] border-b-8 border-[#446079] rounded-xl p-8 ",
+        view: "text-white text-sm bg-[#54b2c2] hover:bg-[#449fb0]",
       },
       size: {
         default: "h-10 px-4 py-2",
@@ -30,6 +31,7 @@ const buttonVariants = cva(
         icon: "h-10 w-10",
         half: "w-1/2 px-4 py-1 rounded-full",
         "one-third": "w-1/3 px-4 py-1 rounded-full",
+        view: "p-2",
       },
     },
     defaultVariants: {

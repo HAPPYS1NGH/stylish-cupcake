@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useInitData } from '@telegram-apps/sdk-react';
 import { User } from '@/types';
 
-const useTelegramUserProfile = () => {
+const useTelegramProfile = () => {
     const [userProfile, setUserProfile] = useState<null | User>(null);
     const initData = useInitData();
 
@@ -18,4 +18,4 @@ const useTelegramUserProfile = () => {
 
 };
 
-export default useTelegramUserProfile;
+export default useTelegramProfile;
