@@ -6,7 +6,6 @@ import { Loader } from "@/components/shared/Loader";
 
 import Image from "next/image";
 import Confirm from "@/containers/home/Confirm";
-import Register from "@/containers/home/Register";
 
 export default function Home() {
   const { userData, isLoading } = useUserCupcakesData();
@@ -35,6 +34,9 @@ export default function Home() {
         </div>
         <Image src="/receipt.svg" alt="Receipt" width={41} height={45} />
       </div>
+      <p className="text-sm text-left">
+        Total Cupcakes left:{userData.balance}
+      </p>
       <div className="flex items-center justify-between">
         <div className="w-full bg-[#0269C8] p-2 border-4  border-light-blue rounded-3xl flex flex-col justify-center items-center gap-4">
           <div className="flex  justify-center items-center gap-4">

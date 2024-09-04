@@ -4,10 +4,13 @@ import Link from "next/link";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
+import Register from "@/containers/home/Register";
+import useUserCupcakesData from "@/hooks/useUserCupcakesData";
+import Claim from "@/containers/home/Claim";
 
 const Navbar = () => {
   const pathname = usePathname();
-
+  const { userData } = useUserCupcakesData();
   // Check if the current path is /leaderboard
   const isLeaderboardPage = pathname === "/leaderboard";
 
@@ -28,7 +31,7 @@ const Navbar = () => {
         <div className="flex items-center">
           <div className="flex items-center gap-1">
             <Image src="/logo.svg" alt="Cupcake" width={34} height={34} />
-            <h1 className="ml-2 font-candal">CUPCAKE</h1>
+            {/* <h1 className="ml-2 font-candal">CUPCAKE</h1> */}
           </div>
 
           <div className="ml-auto flex items-center gap-2">
@@ -40,6 +43,7 @@ const Navbar = () => {
                 height={28}
               />
             </Link>
+            {userData.registered ? <Claim /> : <Register />}
             <ConnectButton accountStatus={"avatar"} chainStatus={"icon"} />
           </div>
         </div>
