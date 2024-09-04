@@ -1,34 +1,17 @@
 "use client";
 
-import {
-  useUtils,
-  usePopup,
-  useMainButton,
-  useViewport,
-} from "@telegram-apps/sdk-react";
+import { useUtils, useMainButton } from "@telegram-apps/sdk-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { useUserCupcakesData } from "@/hooks/useUserCupcakesData";
+import { Loader } from "@/components/shared/Loader";
+
 import Image from "next/image";
 
 export default function Home() {
   const utils = useUtils();
-  const popUp = usePopup();
   const mainBtn = useMainButton();
-  const viewport = useViewport();
-
-  const handlePopUp = async () => {
-    const response = await popUp.open({
-      title: " Rabble",
-      message: "Link will lead to website",
-      buttons: [
-        { id: "link", type: "default", text: "Open rabble.pro" },
-        { type: "cancel" },
-      ],
-    });
-    if (response === "link") {
-      utils.openLink("https://rabble.pro");
-    }
-  };
+  const { userData, isLoading } = useUserCupcakesData();
 
   const handleShare = async () => {
     utils.shareURL(
@@ -58,28 +41,27 @@ export default function Home() {
     }, 2000);
   });
 
-  const handleViewport = async () => {
-    if (!viewport?.isExpanded) {
-      viewport?.expand();
-    }
-  };
   return (
     <main className="my-4 mx-2 p-4 border-x-[10px] border-b-[10px] border-t-[15px] border-border rounded-[35px] gap-6 flex flex-col text-center">
       <div className="my-2">
         <h1 className=" text-xl font-sans font-bold mb-\\ ">Send Cupcake</h1>
-        <p className="text-xs">Paste a wallet address to send a cupcake</p>
+        <p className="text-xs">Paste a Telegram ID to send a cupcake</p>
       </div>
       <div>
-        <p className="text-xs mb-2">Send Wallet Address</p>
+        <p className="text-xs mb-2">Send Telegram ID</p>
         <Input
-          placeholder="0x3FD256b7DaBfE3693EeA1..."
+          placeholder="ethharpreet     (No @)"
           className="bg-fill text-white text-bold rounded-full  border-t-[1px] border-b-[4px] border-x-4 border-light-blue"
         />
       </div>
       <div className="flex items-center justify-between">
-        <div className="w-4/5 bg-fill p-2 border-4  border-light-blue rounded-3xl flex justify-center  items-center gap-4">
+        <div className="w-4/5 bg-fill p-2 border-4  border-light-blue rounded-3xl flex justify-center items-center gap-4">
           <Image src="/cupcake.svg" alt="Cupcake" width={34} height={34} />x
-          <p className="text-2xl">3</p>
+          <Input
+            type="number"
+            placeholder="3"
+            className="bg-fill text-white text-bold w-20 text-2xl text-center rounded-full border-none"
+          />
         </div>
         <Image src="/receipt.svg" alt="Receipt" width={41} height={45} />
       </div>
@@ -159,9 +141,13 @@ export default function Home() {
           </Button>
         </div>
         <div>
-          <p className="text-xs text-black mb-2">Cupcakes Received</p>
+          <p className="text-xs text-black mb-2">Cupcakes Balance</p>
           <div className="flex justify-between bg-fill text-white text-bold rounded-full text-left px-4 py-2">
-            <p className="text-2xl">33</p>
+            {isLoading ? (
+              <Loader className="text-white text-2xl" />
+            ) : (
+              <p className="text-2xl">{userData.balance}</p>
+            )}
             <Image src="/dropdown.svg" alt="Dropdown" width={36} height={24} />
           </div>
         </div>

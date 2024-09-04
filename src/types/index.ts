@@ -1,6 +1,6 @@
 export interface UserData {
-    balance: bigint;     // The balance of cupcakes as a uint256
-    received: bigint;    // The total cupcakes received as a uint256
+    balance: number;     // The balance of cupcakes as a uint256
+    received: number;    // The total cupcakes received as a uint256
     registered: boolean; // Whether the user is registered
 }
 
