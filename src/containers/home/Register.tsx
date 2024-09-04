@@ -23,7 +23,7 @@ import useUserCupcakesData from "@/hooks/useUserCupcakesData";
 function Register() {
   const { isConnected } = useAccount();
   const { userProfile } = useTelegramProfile();
-  const { userData } = useUserCupcakesData();
+  const { userData, status } = useUserCupcakesData();
 
   const mainBtn = useMainButton();
   const utils = useUtils();
@@ -36,6 +36,7 @@ function Register() {
   } = useWaitForTransactionReceipt({ hash });
 
   useEffect(() => {
+    if (status !== "success") return;
     if (isConnected && !userData.registered) {
       mainBtn.setParams({
         bgColor: "#F27389",
@@ -51,7 +52,11 @@ function Register() {
   }, [isConnected, userData.registered]);
 
   useEffect(() => {
-    if (!isConnected || userData.registered) return;
+    if (!isConnected || userData.registered) {
+      mainBtn.disable();
+      mainBtn.hide();
+      return;
+    }
 
     const registerUser = () => {
       mainBtn.showLoader();

@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useUtils, useMainButton } from "@telegram-apps/sdk-react";
 import { useWaitForTransactionReceipt, useWriteContract } from "wagmi";
 import { Link2Icon } from "@radix-ui/react-icons";
@@ -26,6 +26,7 @@ function Confirm({
 
   const mainBtn = useMainButton();
   const utils = useUtils();
+
   const {
     isLoading: isConfirming,
     error,
@@ -45,8 +46,8 @@ function Confirm({
   };
 
   useEffect(() => {
-    if (!mainBtn) return;
     const sendCupcakes = () => {
+      mainBtn.showLoader();
       writeContract({
         address: vendingMachineAddress,
         abi: vendingMachineAbi,
@@ -60,6 +61,18 @@ function Confirm({
       mainBtn.off("click", sendCupcakes);
     };
   }, [mainBtn, recipientTelegramID, amount]);
+
+  useEffect(() => {
+    if (isPending || isConfirming) {
+      mainBtn.showLoader();
+    } else {
+      mainBtn.hideLoader();
+    }
+    if (isConfirmed) {
+      mainBtn.disable();
+      mainBtn.hide();
+    }
+  }, [isPending, isConfirming]);
 
   const handleClose = () => {
     mainBtn.disable();
@@ -81,15 +94,11 @@ function Confirm({
             </DrawerTitle>
           </DrawerHeader>
           <div className="w-full text-left px-6 text-navy">
-            <div className="">
-              <div className="text-black tracking-tighter flex flex-col gap-2 text-sm">
-                <p>
-                  You are sending {amount} cupcakes to @{recipientTelegramID}
-                </p>
-              </div>
-            </div>
+            <p className="text-black tracking-tighter flex flex-col gap-2 text-sm">
+              You are sending {amount} cupcakes to @{recipientTelegramID}
+            </p>
 
-            {error && <p className="text-red text-sm">{error.name}</p>}
+            {error && <p className="text-red text-sm">{error.message}</p>}
             {isConfirmed && (
               <>
                 <Button
@@ -98,7 +107,7 @@ function Confirm({
                   onClick={() => {
                     utils.openLink(`https://sepolia.arbitrum.io/tx/${hash}`);
                   }}
-                  className=" text-white text-sm flex gap-2 mt-2"
+                  className="text-white text-sm flex gap-2 my-2"
                 >
                   View Transaction
                   <Link2Icon />
@@ -111,12 +120,16 @@ function Confirm({
                     );
                   }}
                 >
-                  Tell your friends you send them some cupcakes
+                  Tell your friends you sent them some cupcakes
                 </Button>
               </>
             )}
           </div>
-          <DrawerFooter />
+          <DrawerFooter>
+            <Button onClick={handleClose} className="">
+              Close
+            </Button>
+          </DrawerFooter>
         </DrawerContent>
       </Drawer>
     </div>
