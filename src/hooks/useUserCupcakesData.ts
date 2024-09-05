@@ -28,14 +28,11 @@ export const useUserCupcakesData = () => {
         received: 0,
         registered: false,
     };
-    console.log("//////////////////////");
-    console.log("useUserCupcakesData hook");
-    console.log("rawData");
     console.log(rawData);
 
     // Safeguard against undefined properties in rawData
     if (!isLoading && !error && rawData) {
-        console.log("rawData.received.toString()");
+
         userData = {
             balance: parseInt(rawData[0].toString()),
             received: parseInt(rawData[1].toString()),
@@ -43,9 +40,9 @@ export const useUserCupcakesData = () => {
         };
     }
 
-    console.log("userData,|||| status, isLoading, error");
-    console.log(userData, "||||", status, isLoading, error);
-    console.log("//////////////////////");
+    // console.log("userData,|||| status, isLoading, error");
+    // console.log(userData, "||||", status, isLoading, error);
+    // console.log("//////////////////////");
 
     return { userData, status, isLoading, error };
 };

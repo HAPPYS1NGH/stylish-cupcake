@@ -43,7 +43,7 @@ const Navbar = () => {
                 height={28}
               />
             </Link>
-            {userData.registered ? <Claim /> : <Register />}
+            {userData?.registered ? <Claim /> : <Register />}
             <ConnectButton accountStatus={"avatar"} chainStatus={"icon"} />
           </div>
         </div>

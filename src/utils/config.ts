@@ -4,6 +4,7 @@ import {
   trustWallet,
   ledgerWallet,
 } from "@rainbow-me/rainbowkit/wallets"
+import { http } from "viem"
 import {
   arbitrum,
   arbitrumSepolia,
@@ -19,7 +20,7 @@ if (!WALLETCONNECT_PROJECT_ID) {
   )
 }
 export const config = getDefaultConfig({
-  appName: "RainbowKit demo",
+  appName: "Cupcake Vending Machine",
   projectId: WALLETCONNECT_PROJECT_ID,
   wallets: [
     ...wallets,
@@ -29,10 +30,13 @@ export const config = getDefaultConfig({
     },
   ],
   chains: [
-    arbitrumSepolia, arbitrum,
+    arbitrumSepolia,
     ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === "true"
-      ? [arbitrumSepolia, arbitrum]
+      ? [arbitrumSepolia,]
       : []),
   ],
+  transports: {
+    [arbitrumSepolia.id]: http(process.env.ARBITRUM_RPC_URL)
+  },
   ssr: true,
 })
